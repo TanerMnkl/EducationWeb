@@ -23,20 +23,6 @@ let intervalTime = 5000
 
 
 
-buttons.forEach(button => {
-    button.addEventListener('click', e => {
-        const key = e.target.id;
-        const value = e.target.innerText;
-        localStorage.setItem(key, value);
-    });
-});
-
-
-for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-    console.log(key + " = " + value);
-}
 
 
 
