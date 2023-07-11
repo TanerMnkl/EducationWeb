@@ -1,0 +1,20 @@
+﻿@model List<LessonViewModel>
+@{
+    ViewData["Title"] = "Danışmanlık stesi Ana Sayfa";
+}
+<div class="row">
+    <div class="col-2">
+        @await Component.InvokeAsync("Categories")
+        @await Component.InvokeAsync("Agencies")
+    </div>
+    <div class="col-10">
+        <div class="row g-3">
+            @foreach (var lesson in Model)
+            {
+                <div class="col-2">
+                    @await Html.PartialAsync("_LessonPartial",lesson)
+                </div>
+            }
+        </div>
+    </div>
+</div>

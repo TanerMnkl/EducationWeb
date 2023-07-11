@@ -1,0 +1,22 @@
+﻿@model LessonViewModel
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="~/images/Yazılım/@Model.ImageUrl" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <h5 class="card-text">@Model.AgencyName</h5>
+                <h6 class="card-text">@Model.Kontejan</h6>
+            </div>
+            <div>
+                <div class=" ">
+                    <button href="#" class="btn btn-info btn-sm">İncele</button>
+                    <button class="btn btn-danger btn-sm" style="cursor:default !important" ;>@($"{Model.Price:C0}")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
