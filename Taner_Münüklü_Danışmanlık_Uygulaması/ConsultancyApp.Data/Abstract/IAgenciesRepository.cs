@@ -9,7 +9,7 @@ namespace ConsultancyApp.Data.Abstract
 {
     public  interface IAgenciesRepository:IGenericRepository<Agencies>
     {
-        Task<List<Agencies>> GetAllAuthorsAsync(bool isDeleted, bool? isActive = null);
+        Task<List<Agencies>> GetAllAgenciesAsync(bool isDeleted, bool? isActive = null);
         Task CreateWithUrl(Agencies agencies);
 
     }

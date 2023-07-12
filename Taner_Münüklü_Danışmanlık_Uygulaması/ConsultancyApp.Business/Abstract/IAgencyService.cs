@@ -18,7 +18,7 @@ namespace ConsultancyApp.Business.Abstract
 
         #endregion
         #region Ajanslar
-        Task<List<Agencies>> GetAllAuthorsAsync(bool isDeleted, bool? isActive = null);
+        Task<List<Agencies>> GetAllAgenciesAsync(bool isDeleted, bool? isActive = null);
         Task CreateWithUrl(Agencies agencies);
         #endregion
 

@@ -39,9 +39,9 @@ namespace ConsultancyApp.Business.Concrete
             return result;
         }
 
-        public async Task<List<Agencies>> GetAllAuthorsAsync(bool isDeleted, bool? isActive = null)
+        public async Task<List<Agencies>> GetAllAgenciesAsync(bool isDeleted, bool? isActive = null)
         {
-            var result = await _agenciesRepository.GetAllAuthorsAsync(isDeleted, isActive);
+            var result = await _agenciesRepository.GetAllAgenciesAsync(isDeleted, isActive);
             return result;
         }
 

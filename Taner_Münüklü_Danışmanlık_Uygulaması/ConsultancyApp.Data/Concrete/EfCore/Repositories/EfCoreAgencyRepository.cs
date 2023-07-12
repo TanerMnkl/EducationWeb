@@ -21,7 +21,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Agencies>> GetAllAuthorsAsync(bool isDeleted, bool? isActive = null)
+        public async Task<List<Agencies>> GetAllAgenciesAsync(bool isDeleted, bool? isActive = null)
         {
             var result = _context
                 .Agencies
