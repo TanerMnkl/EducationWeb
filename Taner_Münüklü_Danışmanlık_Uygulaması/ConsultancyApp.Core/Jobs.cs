@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ConsultancyApp.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsultancyApp.Core
@@ -71,5 +73,18 @@ namespace ConsultancyApp.Core
             #endregion
             return text;
         }
+        public static List<int> GetYears()
+        {
+            int year = DateTime.Now.Year;
+            int maxYear = year - 18;
+            int minYear = 0;
+            List<int> years = new List<int>();
+            for (int i = minYear; i <= maxYear; i++)
+            {
+                years.Add(i);
+            }
+            return years;
+        }
+        
     }
 }

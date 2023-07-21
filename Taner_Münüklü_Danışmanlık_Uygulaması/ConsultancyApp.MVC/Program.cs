@@ -1,4 +1,6 @@
 
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Notyf.Models;
 using ConsultancyApp.Business.Abstract;
 using ConsultancyApp.Business.Concrete;
 using ConsultancyApp.Data.Abstract;
@@ -17,6 +19,14 @@ builder.Services.AddScoped<IAgencyService, AgencyManager>();
 builder.Services.AddScoped<ILessonRepository,EfCoreLessonRepository>();
 builder.Services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
 builder.Services.AddScoped<IAgenciesRepository, EfCoreAgencyRepository>();
+
+
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 5;
+    config.IsDismissable = true;
+    config.Position = NotyfPosition.BottomRight;
+});
 
 var app = builder.Build();
 
