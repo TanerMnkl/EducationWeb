@@ -4,15 +4,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ConsultancyApp.MVC.Areas.Admin.Models
 {
-    public class LessonAddViewModel
+    public class LessonEditViewModel
     {
-
-        public LessonAddViewModel()
-        {
-            SelectedCategoryIds = new List<int>();
-        }
-
-
         public int Id { get; set; }
 
         [DisplayName("Ad")]
@@ -21,7 +14,7 @@ namespace ConsultancyApp.MVC.Areas.Admin.Models
         public string Name { get; set; }
         [DisplayName("Hakkında")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamalıdır.")]
-       
+        [MinLength(5, ErrorMessage = "{0} alanı en az {1} karakter uzunluğunda olmalıdır.")]
 
         public string About { get; set; }
         public string Url { get; set; }
@@ -39,9 +32,10 @@ namespace ConsultancyApp.MVC.Areas.Admin.Models
         public int Kontenjan { get; set; }
         [DisplayName("Ders Saati")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamalıdır.")]
-        
+      
         public int PeriodOfStudy { get; set; }
         public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
         public int AgencyId { get; set; }
         public  DateTime ModifiedDate { get; set; } = DateTime.Now;
         public List<SelectListItem> YearList { get; set; }

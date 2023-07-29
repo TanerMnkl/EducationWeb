@@ -46,7 +46,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "full-stack-web-application.jpg",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165
 
 
 
@@ -64,7 +64,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 
                 Kontenjan = 15,
                 Price = 30.000m,
-                PeriodOfStudy = "85 saat"
+                PeriodOfStudy = 85
 
             },
             new Lesson
@@ -79,7 +79,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "java-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165 
 
             },
             new Lesson
@@ -94,7 +94,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "oyun-programlama-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "600 SAAT "
+                PeriodOfStudy = 600
 
             },
             new Lesson
@@ -109,7 +109,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "php-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "72  saat"
+                PeriodOfStudy = 72  
 
             },
             new Lesson
@@ -124,8 +124,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                ImageUrl= "entity-frameworkcore-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "65 saat"
-
+                PeriodOfStudy = 65 
             },
             new Lesson
             {
@@ -139,7 +138,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "c-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165 
 
             },
             new Lesson
@@ -154,7 +153,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                ImageUrl= "mobil-uygulama-gelistirme-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "115 saat"
+                PeriodOfStudy = 115 
 
             },
             new Lesson
@@ -169,7 +168,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "cyber-security-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "600 saat"
+                PeriodOfStudy = 600 
 
             },
             new Lesson
@@ -184,7 +183,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "cyber-security-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "72 saat"
+                PeriodOfStudy = 72 
 
             },
             new Lesson
@@ -199,7 +198,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "cyber-security-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "108 saat"
+                PeriodOfStudy = 108 
 
             },
             new Lesson
@@ -214,7 +213,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "cyber-security-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165 
 
             },
             new Lesson
@@ -229,7 +228,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "java-ile-android-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165 
 
             },
             new Lesson
@@ -244,7 +243,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "Swift-ile-egitim.jpg",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165 
 
             },
             new Lesson
@@ -259,7 +258,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "full-data-ile-egitim.png",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "400 saat"
+                PeriodOfStudy = 400
 
             },
             new Lesson
@@ -274,7 +273,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "bulut-ile-egitim.jpg",
                 Kontenjan = 15,
                 Price = 70.000m,
-                PeriodOfStudy = "165 saat"
+                PeriodOfStudy = 165 
 
             },
             new Lesson
@@ -289,7 +288,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl = "seo-ile-egitim.jpg",
                 Kontenjan = 6,
                 Price = 27.000m,
-                PeriodOfStudy = "35 saat"
+                PeriodOfStudy = 35 
 
             },
             new Lesson
@@ -304,7 +303,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "logo-tasarımı-ile-egitim.jpg",
                 Kontenjan = 6,
                 Price = 16.000m,
-                PeriodOfStudy = "27 saat"
+                PeriodOfStudy = 27 
 
             },
             new Lesson
@@ -319,7 +318,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                 ImageUrl= "html-css-js-ile-egitim.png",
                 Kontenjan = 12,
                 Price = 55.000m,
-                PeriodOfStudy = "65 saat"
+                PeriodOfStudy = 65 
 
             },
             new Lesson
@@ -334,7 +333,7 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
                  ImageUrl= "node-ile-egitim.png",
                 Kontenjan = 12,
                 Price = 55.000m,
-                PeriodOfStudy = "65 saat"
+                PeriodOfStudy = 65
 
             }
             );

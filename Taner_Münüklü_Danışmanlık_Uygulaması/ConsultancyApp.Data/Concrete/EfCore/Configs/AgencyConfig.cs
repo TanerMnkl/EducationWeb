@@ -27,9 +27,24 @@ namespace ConsultancyApp.Data.Concrete.EfCore.Configs
             builder.HasData(new Agencies
             {
                 Id = 1,
+                Name = "Genel",
+                Url = "genel-egitim-kurumu",
+                ImageUrl= "genel-egitim-kurumu",
+                City = "İstanbul",
+                About = "bu bir silinmiş ajansların bulunacağı kısımdır.",
+                Price = 0,
+                FoundationYear = 1,
+                LessonId = 1,
+
+
+
+
+            },new Agencies
+            {
+                Id = 12,
                 Name = "Mellon",
                 Url = "mellon-egitim-kurumu",
-                ImageUrl= "mellon-egitim-kurumu",
+                ImageUrl = "mellon-egitim-kurumu",
                 City = "İstanbul",
                 About = "bu bir frontend firmasıdır",
                 Price = 150.000,

@@ -4,6 +4,7 @@ using ConsultancyApp.Core;
 using ConsultancyApp.Entity.Concrete;
 using ConsultancyApp.MVC.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ConsultancyApp.MVC.Areas.Admin.Controllers
 {
@@ -11,7 +12,8 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
     public class AgenciesController : Controller
     {
         private readonly IAgencyService _agencyManager;
-        
+        private readonly ILessonService _lessonManager;
+
 
         public AgenciesController(IAgencyService agencyManager)
         {
@@ -37,7 +39,12 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
 
 
                 }).ToList();
-            return View(agencyViewModelList);
+            AgencyListViewModel model = new AgencyListViewModel
+            {
+                AgencyViewModelList = agencyViewModelList,
+                SourceAction = "Index"
+            };
+            return View(model);
         }
 
         #endregion
@@ -47,7 +54,16 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            List<int> years = Jobs.GetYears(1900, 2023);
+            AgencyAddViewModel agencyAddViewModel = new AgencyAddViewModel
+            {
+                Years = years.Select(y => new SelectListItem
+                {
+                    Text = y.ToString(),
+                    Value = y.ToString()
+                }).ToList()
+            };
+            return View(agencyAddViewModel);
         }
 
         [HttpPost]
@@ -72,7 +88,14 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View();
+            List<int> years = Jobs.GetYears(1900, 2023);
+            agencyAddViewModel.Years = years.Select(y => new SelectListItem
+            {
+                Text = y.ToString(),
+                Value = y.ToString()
+
+            }).ToList();
+            return View(agencyAddViewModel);
         }
 
 
@@ -101,8 +124,8 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
                 FoundationOfYear = agencies.FoundationYear,
                 IsActive = agencies.IsActive,
                 Url = agencies.Url,
-                City=agencies.City
-                
+                City = agencies.City
+
 
 
             };
@@ -116,7 +139,7 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 Agencies agency = await _agencyManager.GetByIdAsync(agencyEditViewModel.Id);
-                if (agency==null)
+                if (agency == null)
                 {
                     return NotFound();
                 }
@@ -139,10 +162,10 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateIsActive(int id)
         {
             Agencies agency = await _agencyManager.GetByIdAsync(id);
-            if (agency==null)
+            if (agency == null)
             {
                 return NotFound();
-                
+
             }
             agency.IsActive = !agency.IsActive;
             agency.ModifiedDate = DateTime.Now;
@@ -176,17 +199,18 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
                 CreatedDate = agency.CreatedDate,
                 ModifiedDate = agency.ModifiedDate,
                 IsActive = agency.IsActive,
-                IsDeleted=agency.IsDeleted
-                
+                IsDeleted = agency.IsDeleted
+
             };
             return View(agencyDeleteViewModel);
         }
         [HttpGet]
-        public async Task<IActionResult> HardDelete(int id) 
+        public async Task<IActionResult> HardDelete(int id)
         {
             Agencies agency = await _agencyManager.GetByIdAsync(id);
             if (agency == null) return NotFound();
             _agencyManager.Delete(agency);
+            
             return RedirectToAction("Index");
         }
 
@@ -209,6 +233,33 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
 
 
 
+        #endregion
+        #region Silinmiş Yazarları Listeleme
+        [HttpGet]
+        public async Task<IActionResult> DeletedIndex()
+        {
+            List<Agencies> agencyList = await _agencyManager.GetAllAgenciesAsync(true);
+            List<AgencyViewModel> agencyViewModelList = agencyList
+                .Select(a => new AgencyViewModel
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    CreatedDate = a.CreatedDate,
+                    ModifiedDate = a.ModifiedDate,
+                    About = a.About,
+                    IsActive = a.IsActive,
+
+                    Url = a.Url,
+                    FoundationOfYear = a.FoundationYear
+
+                }).ToList();
+            AgencyListViewModel model = new AgencyListViewModel
+            {
+                AgencyViewModelList = agencyViewModelList,
+                SourceAction = "DeletedIndex"
+            };
+            return View("Index", model);
+        }
         #endregion
     }
 }

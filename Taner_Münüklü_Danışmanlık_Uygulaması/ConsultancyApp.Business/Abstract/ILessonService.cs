@@ -22,6 +22,13 @@ namespace ConsultancyApp.Business.Abstract
         Task<List<Lesson>> GetAllActiveLessonsAsync(string categoryUrl = null, string agencyUrl = null);
 
         Task<Lesson> GetLessonByUrlAsync(string lessonUrl);
+        Task<Lesson> GetLessonByIdAsync(int id);
+        Task<List<Lesson>> GetAllLessonsWithAgency(bool isDeleted);
+        Task CreateLessonAsync(Lesson lesson, List<int> SelectedCategoryIds);
+
+        Task<List<Lesson>> GetLessonsWithFullDataAsync(bool? isActive = null);
+        Task UpdateAgencyAsync();
+        Task CheckLessonsCategories();
 
         #endregion
     }

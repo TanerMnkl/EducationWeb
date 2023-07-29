@@ -17,9 +17,10 @@
                             </div>
                             <span class="text-danger" asp-validation-for="Name"></span>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-floating mb-2 mb-md-0">
-                                <input asp-for="FoundationOfYear" class="form-control" placeholder="Kuruluş yılını giriniz.." />
+                     
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="FoundationOfYear" asp-items="@Model.Years"></select>
                                 <label asp-for="FoundationOfYear"></label>
                             </div>
                             <span class="text-danger" asp-validation-for="FoundationOfYear"></span>

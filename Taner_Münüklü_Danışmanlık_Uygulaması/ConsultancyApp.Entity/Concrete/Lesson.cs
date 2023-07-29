@@ -19,7 +19,7 @@ namespace ConsultancyApp.Entity.Concrete
         public List<CategoriesLessons> CategoriesLessons { get; set; }
         public decimal Price { get; set; }
         public int Kontenjan { get; set; }
-        public string PeriodOfStudy { get; set; }
+        public int PeriodOfStudy { get; set; }
 
        
 

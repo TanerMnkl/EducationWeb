@@ -62,5 +62,37 @@ namespace ConsultancyApp.Business.Concrete
             var result = await _lessonRepository.GetLessonByUrlAsync(lessonUrl);
             return result;
         }
+
+        public async Task<Lesson> GetLessonByIdAsync(int id)
+        {
+            return await _lessonRepository.GetLessonByIdAsync(id);
+        }
+
+        public async Task<List<Lesson>> GetAllLessonsWithAgency(bool isDeleted)
+        {
+            var result = await _lessonRepository.GetAllLessonsWithAgency(isDeleted);
+            return result;
+        }
+
+        public async Task CreateLessonAsync(Lesson lesson, List<int> SelectedCategoryIds)
+        {
+            await _lessonRepository.CreateLessonAsync(lesson, SelectedCategoryIds);
+        }
+
+        public async Task<List<Lesson>> GetLessonsWithFullDataAsync(bool? isActive = null)
+        {
+            var result = await _lessonRepository.GetLessonsWithFullDataAsync(isActive);
+            return result;
+        }
+
+        public Task UpdateAgencyAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CheckLessonsCategories()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

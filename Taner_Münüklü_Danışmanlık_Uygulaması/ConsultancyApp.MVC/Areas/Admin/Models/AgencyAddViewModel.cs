@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
 
@@ -22,7 +23,8 @@ namespace ConsultancyApp.MVC.Areas.Admin.Models
         public bool IsActive { get; set; }
         [DisplayName("Kuruluş Yılı")]
         public int FoundationOfYear { get; set; }
-    
+        public List<SelectListItem> Years { get; set; }
+
 
     }
 }

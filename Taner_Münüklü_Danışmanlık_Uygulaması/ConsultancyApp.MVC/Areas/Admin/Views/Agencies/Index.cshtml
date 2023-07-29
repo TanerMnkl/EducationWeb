@@ -1,7 +1,9 @@
-﻿@model List<AgencyViewModel>
+﻿@model AgencyListViewModel
 <div class="row my-2">
     <div class="col-md-6">
-        <h1 class="display-6">Ajans</h1>
+        <h1 class="display-6">
+            @(Model.SourceAction == "Index" ? "Ajanslar" : "Silinmiş Ajanslar")
+        </h1>
     </div>
     <div class="col-md-6 d-flex align-items-center justify-content-end">
         <a asp-area="Admin"
@@ -11,78 +13,103 @@
     </div>
 </div>
 
-
-<div class="card mb-4">
-    <div class="card-body">
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Ad</th>
-                    <th>Açıklama</th>
-                    <th>Oluşturulma Tarihi</th>
-                    <th>Son Değiştirilme Tarihi</th>
-                    <th>Aktif mi?</th>
-                    <th>İşlemler</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var agency in Model)
-                {
+@if (Model.AgencyViewModelList.Count > 0)
+{
+    <div class="card mb-4">
+        <div class="card-body">
+            <table id="data-table">
+                <thead>
                     <tr>
-                        <td>@agency.Id</td>
-                        <td>@agency.Name</td>
-                        <td>@agency.About</td>
-                        <td>@agency.CreatedDate.ToShortDateString()</td>
-                        <td>@agency.ModifiedDate.ToShortDateString()</td>
-                        <td>
-                            <form class="form-check"
-                                  asp-area="Admin"
-                                  asp-controller="Agencies"
-                                  asp-action="UpdateIsActive"
-                                  asp-route-id="@agency.Id"
-                                  id="form-agency-is-active-@agency.Id">
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input"
-                                           type="checkbox"
-                                           role="switch"
-                                           id="flexSwitchCheckChecked" @(agency.IsActive ? "checked" : "")
-                                           onchange="document.getElementById(`form-agency-is-active-@agency.Id`).submit();">
-                                </div>
+                        <th>Id</th>
+                        <th>Ad</th>
+                        <th>Açıklama</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Son Değiştirilme Tarihi</th>
+                        <th>Aktif mi?</th>
+                        <th>İşlemler</th>
 
-                            </form>
-                        </td>
-                        <td>
-                            <!-- KALICI OLARAK SİLME BUTONU -->
-                            <a class="btn btn-danger btn-sm"
-                               asp-area="Admin"
-                               asp-controller="Agencies"
-                               asp-action="Delete"
-                               asp-route-id="@agency.Id">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-
-                            <!-- SOFT SİLME BUTONU -->
-                        @await Html.PartialAsync("_AgencyDeletePartial", agency)
-
-                            <!-- GÜNCELLEME BUTONU -->
-                            <a class="btn btn-info btn-sm"
-                               asp-area="Admin"
-                               asp-controller="Agencies"
-                               asp-action="Edit"
-                               asp-route-id="@agency.Id">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </a>
-
-                        </td>
-                        
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var agency in Model.AgencyViewModelList)
+                    {
+                        <tr>
+                            <td>@agency.Id</td>
+                            <td>@agency.Name</td>
+                            <td>@agency.About</td>
+                            <td>@agency.CreatedDate.ToShortDateString()</td>
+                            <td>@agency.ModifiedDate.ToShortDateString()</td>
+                            <td>
+                                <form class="form-check"
+                                asp-area="Admin"
+                                asp-controller="Agencies"
+                                asp-action="UpdateIsActive"
+                                asp-route-id="@agency.Id"
+                                id="form-agency-is-active-@agency.Id">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input"
+                                        type="checkbox"
+                                        role="switch"
+                                        id="flexSwitchCheckChecked" @(
+                                agency.IsActive ? "checked" : ""
+                                )
+                                        onchange="document.getElementById(`form-agency-is-active-@agency.Id`).submit();">
+                                    </div>
+
+                                </form>
+                            </td>
+                            <td>
+                                <!-- KALICI OLARAK SİLME BUTONU -->
+                                <a class="btn btn-danger btn-sm"
+                                asp-area="Admin"
+                                asp-controller="Agencies"
+                                asp-action="Delete"
+                                asp-route-id="@agency.Id">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+
+                                <!-- SOFT SİLME BUTONU -->
+                                @if (Model.SourceAction == "Index")
+                                {
+                                    @await Html.PartialAsync("_AgencyDeletePartial", agency)
+                                    <!-- GÜNCELLEME BUTONU -->
+                                    <a class="btn btn-info btn-sm"
+                                    asp-area="Admin"
+                                    asp-controller="Agencies"
+                                    asp-action="Edit"
+                                    asp-route-id="@agency.Id">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success btn-sm"
+                                    asp-area="Admin"
+                                    asp-controller="Agencies"
+                                    asp-action="SoftDelete"
+                                    asp-route-id="@agency.Id">
+                                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                                    </a>
+                                }
+
+
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Herhangi bir Ajans bilgisi yoktur.
+    </div>
+}
+
 
 
 @section Css{

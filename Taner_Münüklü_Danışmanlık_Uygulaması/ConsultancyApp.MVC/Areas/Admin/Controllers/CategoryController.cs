@@ -33,8 +33,13 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
                     ModifiedDate = c.ModifiedDate,
                     Url = c.Url
                 }).ToList();
+            CategoryListViewModel model = new CategoryListViewModel
+            {
+                CategoryViewModelList = categoryViewModelList,
+                SourceAction = "Index"
+            };
 
-            return View( categoryViewModelList);
+            return View( model);
         }
 
 
@@ -113,7 +118,19 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
             }
             return View();
         }
-
+        [HttpPost]
+        public async Task<IActionResult> UpdateIsActive(int id)
+        {
+            Category category = await _categoryManager.GetByIdAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            category.IsActive = !category.IsActive;
+            category.ModifiedDate = DateTime.Now;
+            _categoryManager.Update(category);
+            return RedirectToAction("Index");
+        }
 
         #endregion
 
@@ -166,6 +183,29 @@ namespace ConsultancyApp.MVC.Areas.Admin.Controllers
         }
 
 
+        #endregion
+        #region Geri Dönüşüm Kutusu
+        public async Task<IActionResult> DeletedIndex()
+        {
+            List<Category> categoryList = await _categoryManager.GetAllCategoriesAsync(true);
+            List<CategoryViewModel> categoryViewModelList = categoryList
+                .Select(c => new CategoryViewModel
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    CreatedDate = c.CreatedDate,
+                    ModifiedDate = c.ModifiedDate,
+                     Description= c.About,
+                    IsActive = c.IsActive,
+                    Url = c.Url
+                }).ToList();
+            CategoryListViewModel model = new CategoryListViewModel
+            {
+                CategoryViewModelList = categoryViewModelList,
+                SourceAction = "DeletedIndex"
+            };
+            return View("Index", model);
+        }
         #endregion
 
 
