@@ -113,9 +113,7 @@ app.MapControllerRoute(
     pattern: "egitimler/{producturl?}",
     defaults: new { controller = "EducationApp", action = "InstructorList" }
     );
-app.MapControllerRoute(
-    name: "aboutus",
-    pattern: "{controller=Home}/{action=AboutUs}");
+
 
 app.MapAreaControllerRoute(
     name: "Admin",

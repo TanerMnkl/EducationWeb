@@ -36,6 +36,21 @@ namespace EducationApp.MVC.Controllers
         {
             return View();  
         }
-        
+        public async Task<IActionResult> AllProducts()
+        {
+            List<Product> productList = await _productManager.GetAllActiveProductsAsync();
+            List<ProductViewModel> productViewModelList = productList.Select(p => new ProductViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                Url = p.Url,
+                ImageUrl = p.ImageUrl,
+                InstructorName = p.Instructor.FirstName + " " + p.Instructor.LastName,
+                InstructorUrl = p.Instructor.Url,
+            }).ToList();
+            return View(productViewModelList);
+        }
+
     }
 }
